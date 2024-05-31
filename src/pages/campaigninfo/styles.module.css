@@ -1,0 +1,43 @@
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  width: 1px;
+  height: 20px;
+  background-color: #999999;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  background-color: #edf0f0;
+  height: 36px;
+  padding: 8px 16px 8px 16px;
+  gap: 16px;
+  border-radius: 4px;
+}
+
+.active{
+    color: #009918;
+
+}
+
+.flex{
+    display: flex;
+    flex:1
+
+}
+
+.input{
+    flex: 1;
+}
+
+

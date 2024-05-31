@@ -1,0 +1,33 @@
+.form {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.btns {
+  display: flex;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.subscribe {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.subscribe > p {
+  flex: 1;
+  color: #666666;
+}
+
+.select {
+  max-width: 300px;
+}

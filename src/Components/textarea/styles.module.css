@@ -1,0 +1,43 @@
+.input {
+  display: block;
+  width: 100%;
+  background-color: white;
+  border: 0.5px solid #999999;
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-height: 40px;
+  outline: none !important;
+  font-size: 16px;
+}
+
+.input:focus {
+  border-color: var(--primary-color);
+}
+
+.input.inputError {
+  border-color: var(--danger-color);
+}
+
+.inputLabel {
+  display: block;
+  margin-bottom: 4px;
+  color: #666666;
+}
+
+.error {
+  font-size: 0.85rem;
+  color: var(--danger-color, #ef2d2b);
+  line-height: 1;
+  margin-top: 4px;
+}
+
+/* .sizeSmall {
+  width: 244px;
+  height: 44px;
+}
+
+.sizeLarge {
+  width: 684px;
+  height: 40px;
+  padding: 10px 0px 0px 0px;
+} */

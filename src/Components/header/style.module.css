@@ -1,0 +1,25 @@
+.lines{
+    height: 32px;
+    width: 1px;
+    color:#F0F4F4;
+    background-color:#F0F4F4; ;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #F3F3F3;
+    padding: 20px 20px
+
+}
+.contain{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.img{
+    height: 50px;
+    width: 50px;
+}
