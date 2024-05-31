@@ -1,17 +1,17 @@
-import ReactPaginate from "react-paginate";
+import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 import { Icon } from "@iconify/react";
 import React from "react";
 import styles from "./style.module.css";
 
-const Pagination = () => {
+interface IProps extends ReactPaginateProps {}
+const Pagination = ({ pageCount, ...props }: IProps) => {
   return (
     <div>
       <ReactPaginate
         breakLabel="..."
         nextLabel={<Icon icon="material-symbols-light:arrow-forward-ios" />}
-        onPageChange={() => {}}
         pageRangeDisplayed={5}
-        pageCount={17}
+        pageCount={pageCount}
         previousLabel={<Icon icon="material-symbols-light:arrow-back-ios" />}
         renderOnZeroPageCount={null}
         className={styles.container}
@@ -24,6 +24,7 @@ const Pagination = () => {
         activeClassName={styles.active}
         breakClassName={styles.page}
         breakLinkClassName={styles.link}
+        {...props}
       />
     </div>
   );

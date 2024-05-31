@@ -6,8 +6,22 @@ import { Icon } from "@iconify/react";
 import Pagination from "../../Components/pagination";
 
 import SelectOption from "../../Components/selectoption";
+import { useQuery } from "@tanstack/react-query";
+import campaignService from "../../services/campaign.service";
+import { format } from "date-fns";
+import { ICampaign } from "../../types/campaign.types";
+import { AxiosError } from "axios";
+import { Link } from "react-router-dom";
 
 const CampaignPage = () => {
+  const { data, isLoading, isError, error } = useQuery<
+    ICampaign[],
+    AxiosError<any>
+  >({
+    queryKey: ["campaigns"],
+    queryFn: campaignService.getAllCampaigns,
+  });
+
   return (
     <div className={styles.container}>
       <h1>All campaigns</h1>
@@ -36,222 +50,66 @@ const CampaignPage = () => {
         </div>
       </div>
 
-      <div>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>S/N</th>
-              <th>Campaign Name</th>
-              <th>Start Date</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+      {isLoading ? (
+        <div>
+          <p>Loading...</p>
+        </div>
+      ) : isError ? (
+        <div>
+          <p>An error occurred: {error.message}</p>
+        </div>
+      ) : (
+        !!data && (
+          <div>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>S/N</th>
+                  <th>Campaign Name</th>
+                  <th>Start Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
 
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.active}>Active</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>2</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.active}>Active</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>3</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.inactive}>inactive</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>4</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.active}>Active</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>5</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.inactive}>inactive</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>6</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.active}>Active</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>7</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>ACTIVE</td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>8</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.active}>Active</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>9</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.inactive}>inactive</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td>10</td>
-              <td>Infinion Tech</td>
-              <td>27/10/2022</td>
-              <td>
-                <span className={styles.active}>Active</span>
-              </td>
-              <td>
-                <div className={styles.icon}>
-                  <Icon height="20px" width="20px" icon="ph:eye" />
-                  <Icon height="20px" width="20px" icon="mage:edit" />
-                  <Icon
-                    height="20px"
-                    width="20px"
-                    icon="material-symbols:delete-outline"
-                  />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              <tbody>
+                {data.map((campaign, index) => (
+                  <tr key={campaign.id}>
+                    <td>{index + 1}</td>
+                    <td>{campaign.campaignName}</td>
+                    <td>
+                      {format(new Date(campaign.startDate), "dd/MM/yyyy")}
+                    </td>
+                    <td>
+                      <span className={styles.active}>Active</span>
+                    </td>
+                    <td>
+                      <div className={styles.icon}>
+                        <Link to={`/campaigns/${campaign.id}`} title="View">
+                          <Icon height="20px" width="20px" icon="ph:eye" />
+                        </Link>
+                        <Link to={`/campaigns/${campaign.id}`} title="Edit">
+                          <Icon height="20px" width="20px" icon="mage:edit" />
+                        </Link>
+                        <Link to={`/campaigns/${campaign.id}`} title="Delete">
+                          <Icon
+                            height="20px"
+                            width="20px"
+                            icon="material-symbols:delete-outline"
+                          />
+                        </Link>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
+      )}
 
       <div className={styles.flex}>
-        <Pagination />
+        <Pagination pageCount={1} forcePage={0} />
         <p>showing 10 of 40 results</p>
       </div>
     </div>

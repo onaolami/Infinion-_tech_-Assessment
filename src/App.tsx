@@ -1,16 +1,16 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import RootNavigation from "./navigation";
 
-import RootNavigation from './navigation';
+const queryClient = new QueryClient();
 
-
-
-const App = () =>{
-
-  return(
+const App = () => {
+  return (
     <div>
-      <RootNavigation/>
+      <QueryClientProvider client={queryClient}>
+        <RootNavigation />
+      </QueryClientProvider>
     </div>
-  )
-}
-  
+  );
+};
 
 export default App;
