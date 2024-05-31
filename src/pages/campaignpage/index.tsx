@@ -12,6 +12,7 @@ import { format } from "date-fns";
 import { ICampaign } from "../../types/campaign.types";
 import { AxiosError } from "axios";
 import { Link } from "react-router-dom";
+import DeleteCampaign from "../../Components/campaign-form/deleteCampaign";
 
 const CampaignPage = () => {
   const { data, isLoading, isError, error } = useQuery<
@@ -78,7 +79,8 @@ const CampaignPage = () => {
                     <td>{index + 1}</td>
                     <td>{campaign.campaignName}</td>
                     <td>
-                      {format(new Date(campaign.startDate), "dd/MM/yyyy")}
+                      {!!campaign.startDate &&
+                        format(new Date(campaign.startDate), "dd/MM/yyyy")}
                     </td>
                     <td>
                       <span className={styles.active}>Active</span>
@@ -91,13 +93,7 @@ const CampaignPage = () => {
                         <Link to={`/campaigns/${campaign.id}`} title="Edit">
                           <Icon height="20px" width="20px" icon="mage:edit" />
                         </Link>
-                        <Link to={`/campaigns/${campaign.id}`} title="Delete">
-                          <Icon
-                            height="20px"
-                            width="20px"
-                            icon="material-symbols:delete-outline"
-                          />
-                        </Link>
+                        <DeleteCampaign data={campaign} small />
                       </div>
                     </td>
                   </tr>

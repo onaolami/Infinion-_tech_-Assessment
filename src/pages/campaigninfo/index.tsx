@@ -1,36 +1,55 @@
 import { Icon } from "@iconify/react";
 import styles from "./styles.module.css";
 import Input from "../../Components/Input";
+import CampaignForm from "../../Components/campaign-form";
+import { useQuery } from "@tanstack/react-query";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import campaignService from "../../services/campaign.service";
 
 const CampaignInfo = () => {
+  const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["campaign", "single", id],
+    queryFn: () => campaignService.getCampaign(Number(id)),
+  });
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div>
-      <div className={styles.icon}>
+      <button onClick={goBack} className={styles.backBtn}>
         <Icon icon="ic:baseline-arrow-back" />
         <p>Back</p>
-      </div>
+      </button>
       <div className={styles.wrap}>
         <h1>Campaign Information</h1>
         <div className={styles.status}>
           <p>Campaign Status</p>
           <div className={styles.line}></div>
-          <p className={styles.active}>Active</p>
+          {!!data && data.campaignStatus === "Active" ? (
+            <p className={styles.active}>Active</p>
+          ) : (
+            <p className={styles.inactive}>Inactive</p>
+          )}
         </div>
       </div>
-      <div>
-        <p>Campaign Name</p>
-        <Input placeholder="Fidelity Bank" />
-      </div>
-      <div className={styles.flex}>
-        <div className={styles.input}>
-          <p>Start Date</p>
-          <Input placeholder="27/10/2022" />
+
+      {isLoading ? (
+        <div>
+          <p>Loading...</p>
         </div>
-        <div className={styles.input}>
-          <p>End date</p>
-          <Input placeholder="27/11/2022" />
+      ) : isError ? (
+        <div>
+          <p>An error occurred: {error.message}</p>
         </div>
-      </div>
+      ) : (
+        !!data && (
+          <CampaignForm type="EDIT" data={{ ...data, id: Number(id) }} />
+        )
+      )}
     </div>
   );
 };

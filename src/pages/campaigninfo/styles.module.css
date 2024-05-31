@@ -1,6 +1,15 @@
-.icon {
-  display: flex;
+.backBtn {
+  display: inline-flex;
+  gap: 4px;
   align-items: center;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.backBtn:hover {
+  background-color: var(--primary-color-light);
 }
 
 .line {
@@ -25,19 +34,18 @@
   border-radius: 4px;
 }
 
-.active{
-    color: #009918;
-
+.active {
+  color: #009918;
+}
+.inactive {
+  color: var(--danger-color);
 }
 
-.flex{
-    display: flex;
-    flex:1
-
+.flex {
+  display: flex;
+  flex: 1;
 }
 
-.input{
-    flex: 1;
+.input {
+  flex: 1;
 }
-
-

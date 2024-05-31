@@ -11,12 +11,10 @@
 }
 
 .sizeLarge {
-  width: 196px;
-  height: 40px;
+  height: 56px;
 }
 
 .sizeSmall {
-  width: 98px;
   height: 32px;
   padding: 8px 10px 8px 10px;
 }
@@ -30,6 +28,11 @@
 .variantPrimary {
   color: #ffffff;
   background: var(--primary-color);
+  border: 0;
+}
+.variantDanger {
+  color: #ffffff;
+  background: var(--danger-color);
   border: 0;
 }
 .variantPrimary:hover {

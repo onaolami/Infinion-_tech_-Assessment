@@ -15,8 +15,11 @@ class CampaignService {
     return res.data;
   }
 
-  getCampaign(id: number): Promise<AxiosResponse<ICampaign>> {
-    return apiInstance.get(`/Campaign/${id}`);
+  async getCampaign(id: number): Promise<ICampaign> {
+    const res: AxiosResponse<ICampaign> = await apiInstance.get(
+      `/Campaign/${id}`
+    );
+    return res.data;
   }
 
   updateCampaign(data: ICampaign): Promise<AxiosResponse<any>> {
@@ -28,6 +31,13 @@ class CampaignService {
 
   deleteCampaign(id: number): Promise<AxiosResponse<any>> {
     return apiInstance.delete(`/Campaign/${id}`);
+  }
+
+  setCampaignStatus(id: number, status: boolean) {
+    return apiInstance.put(`/CampaignStatus/${id}`, {
+      id: id,
+      campaignStatus: status,
+    });
   }
 }
 
