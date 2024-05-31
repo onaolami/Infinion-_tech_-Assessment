@@ -10,6 +10,14 @@
   font-size: 16px;
 }
 
+.input.hasBefore {
+  padding-left: 44px;
+}
+
+.input.hasAfter {
+  padding-right: 44px;
+}
+
 .input:focus {
   border-color: var(--primary-color);
 }
@@ -31,6 +39,28 @@
   margin-top: 4px;
 }
 
+.inputWrapper {
+  height: auto;
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.contentBefore,
+.contentAfter {
+  position: absolute;
+  width: 32px;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  left: 2px;
+  top: 0;
+}
+
+.contentAfter {
+  left: unset;
+  right: 2px;
+}
 /* .sizeSmall {
   width: 244px;
   height: 44px;

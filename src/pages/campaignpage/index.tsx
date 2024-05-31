@@ -42,8 +42,10 @@ const CampaignPage = () => {
         </div>
         <div className={styles.wrap}>
           <div>
-            <Input placeholder="Search" />
-            <img src="/Images/search.png" alt="" />
+            <Input
+              placeholder="Search"
+              contentAfter={<Icon icon="bx:search" />}
+            />
           </div>
           <div>
             <SelectOption />
