@@ -25,7 +25,7 @@ const CampaignPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1>All campaigns</h1>
+      <h1 className={styles.text}>All campaigns</h1>
 
       <div className={styles.contain}>
         <div className={styles.button}>
