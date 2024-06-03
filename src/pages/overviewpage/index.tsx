@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import Button from "../../Components/button";
 import styles from "./styles.module.css";
+
 
 const OverviewPage = () => {
   return (
@@ -25,10 +27,13 @@ const OverviewPage = () => {
         <img className={styles.img} src="/Images/Group.svg" alt="" />
         <p>No activity yet.Create a new campaign to get started with</p>
         <div>
-          <Button size="LARGE" variant="PRIMARY">
-            <img src="/Images/cross.png" alt="" />
-            New Campaign
-          </Button>
+          
+         <Link to="/campaigns/new">
+            <Button className={styles.btn} size="LARGE" variant="PRIMARY">
+              <img src="/Images/cross.png" alt="" />
+              New Campaign
+            </Button>
+          </Link>
         </div>
       </div>
     </>

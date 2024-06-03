@@ -6,9 +6,16 @@
   margin-bottom: 30px;
 }
 
-.text {
-  background-color: linear-gradient(99.07deg, #247b7b 2.54%, #3b247b 101.29%);
+
+
+.text{
+  color: linear-gradient(99.07deg, #247B7B 2.54%, #3B247B 101.29%);
+
 }
+
+
+
+
 
 .container {
   background-color: var(--primary-color-light);
