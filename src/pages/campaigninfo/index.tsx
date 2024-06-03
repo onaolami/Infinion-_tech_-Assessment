@@ -1,9 +1,9 @@
 import { Icon } from "@iconify/react";
 import styles from "./styles.module.css";
-import Input from "../../Components/Input";
+
 import CampaignForm from "../../Components/campaign-form";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import campaignService from "../../services/campaign.service";
 
 const CampaignInfo = () => {

@@ -5,7 +5,7 @@ const SideBar = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrap}>
-        <img className={styles.image} src="/Images/message.png" />
+        <img className={styles.image} src="/Images/message.png" alt="" />
 
         <h1 className={styles.text}>Scrutz</h1>
       </div>
@@ -44,7 +44,7 @@ const SideBar = () => {
 
           <li className={styles.navListItem}>
             <Link to="">
-              <img src="/Images/account.png" alt="" />
+              <img src="/Images/account.png" alt="account icon" />
               <p>Account Settings</p>
             </Link>
           </li>
